@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>City of Calgary compensation, over time</title>
+<style>
+  body { font-family: system-ui, sans-serif; color: #1f2937; background: #faf7f2; margin: 0; line-height: 1.6; }
+  main { max-width: 960px; margin: 0 auto; padding: 2rem 1rem 4rem; }
+  h1 { font-size: 2rem; margin: 0 0 .25rem; }
+  h2 { margin-top: 2.5rem; }
+  p.lead { color: #6b7280; margin-top: 0; }
+  iframe { width: 100%; border: 1px solid #e5e1d8; border-radius: 8px; background: #fff; margin: .5rem 0 1.5rem; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+  .grid img { width: 100%; border-radius: 8px; border: 1px solid #e5e1d8; }
+  a { color: #2a78d6; }
+  footer { margin-top: 3rem; font-size: .9rem; color: #6b7280; }
+</style>
+</head>
+<body>
+<main>
+  <h1>City of Calgary compensation, over time</h1>
+  <p class="lead">Pay ranges for City of Calgary position titles, from the City's annual compensation disclosure lists.</p>
+
+  <h2>Reports</h2>
+  <ul>
+    <li><a href="reports/brief.html">One-page brief</a> (<a href="reports/brief.pdf">PDF</a>)</li>
+    <li><a href="reports/detailed.html">Detailed report</a></li>
+  </ul>
+
+  <h2>Interactive plots</h2>
+  <iframe src="plots/01_distribution.html" height="560" title="Roles by pay-range midpoint"></iframe>
+  <iframe src="plots/02_band_mix.html" height="420" title="Share of roles by pay band"></iframe>
+  <iframe src="plots/03_ceiling_change.html" height="560" title="Change in the maximum rate"></iframe>
+  <iframe src="plots/04_role_groups.html" height="680" title="Median pay midpoint by role group"></iframe>
+  <iframe src="plots/05_explorer.html" height="680" title="Every role, by year"></iframe>
+
+  <h2>Infographics</h2>
+  <div class="grid">
+    <a href="infographics/01_median_over_time.png"><img src="infographics/01_median_over_time.png" alt="Median pay midpoint by year"></a>
+    <a href="infographics/02_share_150k.png"><img src="infographics/02_share_150k.png" alt="Share of roles with a midpoint of $150,000 or more"></a>
+    <a href="infographics/03_role_groups.png"><img src="infographics/03_role_groups.png" alt="Change in median midpoint by role group"></a>
+    <a href="infographics/04_big_raises.png"><img src="infographics/04_big_raises.png" alt="Share of roles with a ceiling increase above 10 percent"></a>
+  </div>
+
+  <h2>Data</h2>
+  <p>The complete dataset is in the repo under <code>data/processed/</code> as CSV and Parquet.</p>
+
+  <footer>Source: City of Calgary Open Data, Compensation Disclosure Lists. Lists show base pay ranges for filled position titles, not individual salaries. Calgary Police Service, seasonal and on-call roles are not included.</footer>
+</main>
+</body>
+</html>
