@@ -1,4 +1,4 @@
-# City of Calgary compensation, over time
+# City of Calgary compensation disclosure
 
 Data, interactive plots, reports and infographics built from the City of Calgary's annual
 Compensation Disclosure Lists (open data, https://data.calgary.ca). The ETL reads the City's unified
