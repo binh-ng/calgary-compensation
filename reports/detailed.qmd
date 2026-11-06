@@ -1,0 +1,96 @@
+---
+title: "City of Calgary compensation, over time"
+subtitle: "Detailed report on the annual compensation disclosure lists"
+format:
+  html:
+    toc: true
+    embed-resources: true
+    theme: cosmo
+execute:
+  echo: false
+  warning: false
+jupyter: python3
+---
+
+```{python}
+from pathlib import Path
+import pandas as pd
+import plotly.express as px
+from IPython.display import Markdown, display
+
+root = Path("..") if Path("../data").exists() else Path(".")
+df = pd.read_csv(root / "data/processed/compensation_all_years.csv")
+chg = pd.read_csv(root / "data/processed/matched_changes.csv")
+piv = pd.read_csv(root / "data/processed/group_pivot.csv")
+years = sorted(df["year"].unique())
+df["year_s"] = df["year"].astype(str)
+piv["year_s"] = piv["year"].astype(str)
+first, last = years[0], years[-1]
+med = df.groupby("year")["midpoint"].median()
+roles = df.groupby("year").size()
+top = df.assign(t=df["midpoint"] >= 150000).groupby("year")["t"].mean() * 100
+```
+
+## Key findings
+
+```{python}
+Markdown(f"""
+- The median range midpoint went from ${med[first]:,.0f} in {first} to ${med[last]:,.0f} in {last}, up {(med[last]/med[first]-1)*100:.1f}%.
+- Roles with a midpoint of $150,000 or more went from {top[first]:.1f}% to {top[last]:.1f}% of the list.
+- The list has {roles[first]:,} position titles in {first} and {roles[last]:,} in {last}.
+""")
+```
+
+## What the data covers
+
+Each row is a position title with a minimum and a maximum annual base rate. One title can have many employees, similar jobs are merged by function or pay level, and only filled positions appear. Calgary Police Service, seasonal, on-call and student jobs, non-union recreation program jobs, some unique contract positions and elected officials are not on the list. About 3% of titles have one fixed rate set by a collective agreement.
+
+## Pay levels
+
+```{python}
+fig = px.histogram(df, x="midpoint", color="year_s", barmode="overlay", opacity=0.6,
+                   labels={"midpoint": "Range midpoint ($)", "year_s": "Year"})
+fig.update_traces(xbins=dict(start=40000, end=210000, size=10000))
+fig.update_layout(template="plotly_white", height=420, yaxis_title="Roles")
+fig.show()
+```
+
+## Pay changes for the same roles
+
+```{python}
+chg["period"] = chg["from_year"].astype(str) + " to " + chg["to_year"].astype(str)
+fig = px.histogram(chg[chg["max_rate_change_pct"].between(-20, 40)], x="max_rate_change_pct",
+                   color="period", barmode="group",
+                   labels={"max_rate_change_pct": "Change in maximum rate (%)", "period": "Period"})
+fig.update_traces(xbins=dict(start=-20, end=40, size=2))
+fig.update_layout(template="plotly_white", height=420, yaxis_title="Roles")
+fig.show()
+```
+
+## Role groups
+
+Groups come from keywords in the position title, first match wins. Edit the rules in `src/etl.py`.
+
+```{python}
+order = piv[piv["year"] == last].sort_values("median_midpoint")["role_group"].tolist()
+fig = px.bar(piv, x="median_midpoint", y="role_group", color="year_s", barmode="group", orientation="h",
+             category_orders={"role_group": order},
+             labels={"median_midpoint": "Median range midpoint ($)", "role_group": "", "year_s": "Year"})
+fig.update_layout(template="plotly_white", height=620)
+fig.show()
+```
+
+```{python}
+table = piv.pivot(index="role_group", columns="year", values="roles")
+table["Change"] = table[last] - table[first]
+display(table.sort_values(last, ascending=False))
+```
+
+## Caveats
+
+- Role counts are title counts, not headcount, and move with hiring, vacancies and how the City groups titles.
+- The 2026 list reflects a new salary structure for exempt roles, so 2026 changes mix pay increases with restructuring.
+- Rates are annual base pay. Overtime, step increases, performance pay and benefits are not included.
+- Keyword grouping is approximate, and some titles land in a neighbouring group.
+
+*Source: City of Calgary Open Data, Compensation Disclosure Lists.*
