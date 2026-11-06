@@ -1,0 +1,5 @@
+# One unified dataset holds every year since 2014 (position_title, min and max annual base rate).
+# The ETL runs a single query filtered to the years below. Widen the range to analyse more years.
+dataset: 9bze-mzx6
+first_year: 2024
+last_year: 2026
