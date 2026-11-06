@@ -1,0 +1,37 @@
+role_group,year,roles,avg_min,avg_max,median_midpoint
+"Analysts, advisors and specialists",2024,151,74395.0,102717.0,85222.0
+"Analysts, advisors and specialists",2025,158,78076.0,107314.0,90626.0
+"Analysts, advisors and specialists",2026,175,81493.0,110158.0,93575.0
+Customer service and administration,2024,161,76638.0,105102.0,89508.0
+Customer service and administration,2025,151,81214.0,110821.0,95186.0
+Customer service and administration,2026,140,89867.0,116042.0,98271.0
+"Engineering, planning and design",2024,194,79628.0,110472.0,93145.0
+"Engineering, planning and design",2025,212,84245.0,116680.0,97865.0
+"Engineering, planning and design",2026,206,91311.0,121018.0,102217.0
+Executive and senior leadership,2024,81,148710.0,228602.0,176500.0
+Executive and senior leadership,2025,75,154841.0,236155.0,181000.0
+Executive and senior leadership,2026,80,214393.0,266098.0,261630.0
+"Finance, legal, HR and corporate",2024,149,77771.0,109788.0,93994.0
+"Finance, legal, HR and corporate",2025,146,82626.0,116789.0,99964.0
+"Finance, legal, HR and corporate",2026,151,91081.0,121765.0,103212.0
+"IT, data and technology",2024,92,76827.0,104668.0,89508.0
+"IT, data and technology",2025,95,81269.0,110430.0,95186.0
+"IT, data and technology",2026,98,88179.0,116483.0,98271.0
+Management and supervision,2024,627,95068.0,143923.0,119198.0
+Management and supervision,2025,653,98187.0,148911.0,122178.0
+Management and supervision,2026,784,134080.0,167669.0,149634.0
+Other / unclassified,2024,132,77054.0,101992.0,82444.0
+Other / unclassified,2025,132,81037.0,107301.0,89170.0
+Other / unclassified,2026,135,89710.0,114054.0,93575.0
+Public safety and emergency,2024,76,96369.0,117192.0,101985.0
+Public safety and emergency,2025,73,103656.0,124596.0,106842.0
+Public safety and emergency,2026,69,110142.0,128771.0,111646.0
+"Recreation, library and community",2024,49,75216.0,101702.0,85222.0
+"Recreation, library and community",2025,47,77612.0,103874.0,90626.0
+"Recreation, library and community",2026,45,84401.0,108874.0,93575.0
+"Trades, utilities and field operations",2024,158,73914.0,91003.0,80390.0
+"Trades, utilities and field operations",2025,153,79097.0,97396.0,85486.0
+"Trades, utilities and field operations",2026,151,84761.0,102024.0,88270.0
+Transit and fleet,2024,32,72710.0,88216.0,76020.0
+Transit and fleet,2025,28,78760.0,94622.0,82802.0
+Transit and fleet,2026,29,81367.0,96195.0,84010.0
