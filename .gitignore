@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+.quarto/
+.ipynb_checkpoints/
+
+# Built by the Pages workflow, not committed
+site/plots/
+site/infographics/
+site/reports/
+reports/*.html
+reports/*.pdf
+reports/*_files/
